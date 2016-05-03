@@ -1,0 +1,65 @@
+<settings>
+  <servers>
+    <server>
+      <id>snapshots</id>
+      <username>admin</username>
+      <!-- password>admin123</password -->
+    </server>
+    <server>
+      <id>releases</id>
+      <!-- password>admin123</password -->
+    </server>
+  </servers>  
+
+  <mirrors>
+
+    <mirror>
+      <id>nexus</id>
+      <mirrorOf>*</mirrorOf>
+      <url>http://nexus.polystar.se/content/groups/public</url>
+    </mirror>
+
+  </mirrors>
+
+  <profiles>
+    <profile>
+      <id>snaps</id>
+      <repositories>
+        <repository>
+          <id>snapshots</id>
+          <releases>
+            <enabled>false</enabled>
+            <updatePolicy>always</updatePolicy>
+            <checksumPolicy>warn</checksumPolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+          </snapshots>
+          <url>http://nexus.polystar.se/content/repositories/snapshots</url>
+          <layout>default</layout>
+        </repository>
+        <repository>
+          <id>releases</id>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>once</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>never</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+          </snapshots>
+          <url>http://nexus.polystar.se/content/repositories/snapshots</url>
+          <layout>default</layout>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>snaps</activeProfile>
+  </activeProfiles>
+ </settings>
